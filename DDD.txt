@@ -1,0 +1,43 @@
+1;340;Direito
+2;341;Direito Público
+3;341.1;Direito Internacional Público
+4;341.14;Direito Penal Internacional
+5;341.2;Direito Constitucional
+6;341.27;Direitos Fundamentais
+7;341.28;Direito Eleitoral
+8;341.3;Direito Administrativo
+9;341.347;Direito Ambiental
+10;341.378;Direito Econômico
+11;341.38;Direito Financeiro
+12;341.39;Direito Tributário
+13;341.4;Direito Processual
+14;341.43;Direito Processual Penal
+15;341.46;Direito Processual Civil
+16;341.5;Direito Penal
+17;341.58;Direito Penitenciário. Direito de Execuções Penais
+18;341.6;Direito Previdenciário. Seguridade Social
+19;341.7;Direito Militar
+20;341.75;Direito Penal Militar
+21;341.8;Direito Aéreo. Código do Ar
+22;341.87;Direito Aéreo Militar
+23;341.88;Direito aplicado à Telecomunicação
+24;341.89;Direito Espacial
+25;342;Direito Privado
+26;342.1;Direito Civil
+27;342.12;Direito das Coisas | Direitos Reais, Coisas e Bens
+28;342.16;Direito de Família
+29;342.165;Direito das Sucessões
+30;342.17;Direito do Menor
+31;342.2;Direito Comercial
+32;342.234;Direito Bancário
+33;342.27;Direitos Intelectuais. Propriedade industrial, comercial, científica e de programas de computador.
+34;342.28;Direito autoral. Direito Artístico e Literário.
+35;342.29;Direito Marítimo
+36;342.299;Direito Aeronáutico
+37;342.3;Direito Internacional Privado
+38;342.5;Direito do Consumidor
+39;342.6;Direito do Trabalho
+40;342.68;Direito Processual do Trabalho
+41;343;Direito Canônico| Direito Canônico e Eclesiástico
+42;344;Direito Romano
+31;344.1;Teste Cadastro
