@@ -21,17 +21,20 @@ import modelos.utilidades.GeradorID;
  * @author jsfr
  */
 public class TelaAreaDeConhecimento extends javax.swing.JInternalFrame {
-    ICRUDAreaDeConhecimento objetoControle = new AreaDeConhecimentoControle();
+    ICRUDAreaDeConhecimento objetoControleArea = new AreaDeConhecimentoControle();
+    Listagem objetoListarArea = new Listagem();
     /**
      * Creates new form TelaAreaDeConhecimento
      */
     public TelaAreaDeConhecimento() {
         initComponents();
         
-        DefaultTableModel model = (DefaultTableModel) jTable_tabelaAreaDeConhecimento.getModel();
-        jTable_tabelaAreaDeConhecimento.setRowSorter(new TableRowSorter(model));
+        // Criando tabala Listar Area de Conhecimento
+        DefaultTableModel modelAreasDeConhecimento = (DefaultTableModel) jTable_tabelaAreaDeConhecimento.getModel();
+        jTable_tabelaAreaDeConhecimento.setRowSorter(new TableRowSorter(modelAreasDeConhecimento));  
+        
         try{
-            listarDadosNaTela(objetoControle.recuperar());
+            objetoListarArea.listarDadosNaTelaAreaDeConhecimento(objetoControleArea.recuperar(), modelAreasDeConhecimento);
         }catch (Exception erro) {
             JOptionPane.showMessageDialog(rootPane, erro);
         } finally {
@@ -41,23 +44,6 @@ public class TelaAreaDeConhecimento extends javax.swing.JInternalFrame {
         }
     }
     
-    private void listarDadosNaTela(ArrayList<AreaDeConhecimento> lista) {
-        //Ordenando o Array por nome
-        //Criando a Tabela
-        DefaultTableModel model = (DefaultTableModel) jTable_tabelaAreaDeConhecimento.getModel();
-        jTable_tabelaAreaDeConhecimento.setRowSorter(new TableRowSorter(model));
-        //Limpando a tela
-        model.setNumRows(0);
-        //Correr o ArrayList
-        for (int pos = 0; pos < lista.size(); pos++) {
-            String[] linha = new String[3];
-            AreaDeConhecimento aux = lista.get(pos);
-            linha[0] = "" + aux.getId();
-            linha[1]=aux.getClassificacaoDecimalDireito();
-            linha[2] = aux.getDescricao();
-            model.addRow(linha);
-        }
-    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -151,8 +137,7 @@ public class TelaAreaDeConhecimento extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton_incluirAreaDeConhecimento)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE))
         );
 
         setBounds(150, 20, 490, 398);
@@ -163,8 +148,11 @@ public class TelaAreaDeConhecimento extends javax.swing.JInternalFrame {
             // TODO add your handling code here:
             GeradorID gerarID = new GeradorID();
             AreaDeConhecimento objetoAreaDeConhecimento = new AreaDeConhecimento(gerarID.getID(), jTextField_codigoAreaConhecimento.getText(),jTextField_descricaoAreaConhecimento.getText());
-            objetoControle.incluir(objetoAreaDeConhecimento);
-            listarDadosNaTela(objetoControle.recuperar());
+            objetoControleArea.incluir(objetoAreaDeConhecimento);
+            // Criando tabala Listar Area de Conhecimento
+            DefaultTableModel modelAreasDeConhecimento = (DefaultTableModel) jTable_tabelaAreaDeConhecimento.getModel();
+            jTable_tabelaAreaDeConhecimento.setRowSorter(new TableRowSorter(modelAreasDeConhecimento));  
+            objetoListarArea.listarDadosNaTelaAreaDeConhecimento(objetoControleArea.recuperar(), modelAreasDeConhecimento);
         } catch (Exception erro) {
             JOptionPane.showMessageDialog(rootPane, erro);
         }finally{

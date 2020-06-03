@@ -9,6 +9,7 @@ package modelos.classes;
  *
  * @author jsfr
  */
-public class Funcionario {
-    
+public enum TipoDeStatus {
+    ATIVO,
+    INATIVO;
 }

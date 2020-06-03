@@ -39,7 +39,7 @@ public class Home extends javax.swing.JFrame {
         jSeparator5 = new javax.swing.JToolBar.Separator();
         jButton_iconExemplar = new javax.swing.JButton();
         jSeparator6 = new javax.swing.JToolBar.Separator();
-        jButton_iconFuncionario = new javax.swing.JButton();
+        jButton_iconColaborador = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem_menuCadastroEditora = new javax.swing.JMenuItem();
@@ -117,14 +117,19 @@ public class Home extends javax.swing.JFrame {
         jToolBar1.add(jButton_iconExemplar);
         jToolBar1.add(jSeparator6);
 
-        jButton_iconFuncionario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/User.png"))); // NOI18N
-        jButton_iconFuncionario.setText("Funcionário");
-        jButton_iconFuncionario.setFocusable(false);
-        jButton_iconFuncionario.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton_iconFuncionario.setMaximumSize(new java.awt.Dimension(65, 55));
-        jButton_iconFuncionario.setMinimumSize(new java.awt.Dimension(65, 55));
-        jButton_iconFuncionario.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(jButton_iconFuncionario);
+        jButton_iconColaborador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/User.png"))); // NOI18N
+        jButton_iconColaborador.setText("Colaborador");
+        jButton_iconColaborador.setFocusable(false);
+        jButton_iconColaborador.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton_iconColaborador.setMaximumSize(new java.awt.Dimension(65, 55));
+        jButton_iconColaborador.setMinimumSize(new java.awt.Dimension(65, 55));
+        jButton_iconColaborador.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton_iconColaborador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_iconColaboradorActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(jButton_iconColaborador);
 
         jMenu1.setText("Cadastros");
         jMenu1.addActionListener(new java.awt.event.ActionListener() {
@@ -259,6 +264,13 @@ public class Home extends javax.swing.JFrame {
         TelaAreaDeConhecimento.setVisible(true);
     }//GEN-LAST:event_jMenuItem_AreaConhecimentoActionPerformed
 
+    private void jButton_iconColaboradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_iconColaboradorActionPerformed
+        // TODO add your handling code here:
+        TelaDoColaborador TelaDoColaborador = new TelaDoColaborador();
+        jDesktopPane_AreaTrabalho.add(TelaDoColaborador);
+        TelaDoColaborador.setVisible(true);
+    }//GEN-LAST:event_jButton_iconColaboradorActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -296,9 +308,9 @@ public class Home extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton_iconAutor;
+    private javax.swing.JButton jButton_iconColaborador;
     private javax.swing.JButton jButton_iconEditora;
     private javax.swing.JButton jButton_iconExemplar;
-    private javax.swing.JButton jButton_iconFuncionario;
     private javax.swing.JButton jButton_iconLivro;
     private javax.swing.JDesktopPane jDesktopPane_AreaTrabalho;
     private javax.swing.JMenu jMenu1;
