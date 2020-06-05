@@ -58,4 +58,47 @@ public class ColaboradorPersistencia implements ICRUDColaborador{
             throw erro;
         }
     }
+    
+    @Override
+    public void editar(Colaborador objeto) throws Exception {
+        try {
+            ArrayList<Colaborador> listaDeColaborador = recuperar();
+            //Cria o arquivo
+            FileWriter fw = new FileWriter(nomeDoArquivoNoDisco);
+            //Criar o buffer do arquivo
+            BufferedWriter bw = new BufferedWriter(fw);
+            for (int pos = 0; pos < listaDeColaborador.size(); pos++) {
+                Colaborador aux = listaDeColaborador.get(pos);
+                if (objeto.getCpf()==(aux.getCpf())) {
+                    bw.write(objeto.toString() + "\n");
+                }
+                else{
+                    bw.write(aux.toString() + "\n");
+                }
+            }
+            bw.close();
+        } catch (Exception erro) {
+            throw erro;
+        }
+    }
+
+    @Override
+    public void excluir(long cpf) throws Exception {
+        try {
+            ArrayList<Colaborador> listaDeColaborador = recuperar();
+            //Cria o arquivo
+            FileWriter fw = new FileWriter(nomeDoArquivoNoDisco);
+            //Criar o buffer do arquivo
+            BufferedWriter bw = new BufferedWriter(fw);
+            for (int pos = 0; pos < listaDeColaborador.size(); pos++) {
+                Colaborador aux = listaDeColaborador.get(pos);
+                if (cpf!=(aux.getCpf())) {
+                    bw.write(aux.toString() + "\n");
+                }
+            }
+            bw.close();
+        } catch (Exception erro) {
+            throw erro;
+        }
+    }
 }

@@ -34,14 +34,39 @@ public class ColaboradorControle implements ICRUDColaborador {
         ArrayList<Colaborador> listaDeColaborador = this.objeto.recuperar();
         for (int pos = 0; pos < listaDeColaborador.size(); pos++) {
             Colaborador aux = listaDeColaborador.get(pos);
-            if (objeto.getNome().equalsIgnoreCase(aux.getNome())) {
-                throw new Exception("Colaborador ja Existe: ID: " + aux.getId());
+            if (objeto.getCpf() == (aux.getCpf())) {
+                throw new Exception("CPF ja Cadastrado, ID: " + aux.getId());
             }
         }
         this.objeto.incluir(objeto);
     }
 
+    @Override
     public ArrayList<Colaborador> recuperar() throws Exception {
         return this.objeto.recuperar();
+    }
+
+    @Override
+    public void editar(Colaborador objeto) throws Exception {
+        System.out.println("Estou na controle verificando e "
+                + "mandando incluir os dados");
+        //valida nome;
+        //if(objeto.getClassificacaoDecimalDireito().isEmpty()) throw new Exception("Código inválido! Tente novamente");
+        //if(objeto.getDescricao().isEmpty()) throw new Exception("Descrição inválida! Tente novamente");
+        //verifica se editora já existe;
+        ArrayList<Colaborador> listaDeColaborador = this.objeto.recuperar();
+        for (int pos = 0; pos < listaDeColaborador.size(); pos++) {
+            Colaborador aux = listaDeColaborador.get(pos);
+            if (objeto.getId()==(aux.getId()) && (objeto.getCpf() != (aux.getCpf()))) {
+                throw new Exception("CPF: " + aux.getCpf() + " Não é permitido alterar CPF");
+            } else {
+                this.objeto.editar(objeto);
+            }
+        }
+    }
+
+    @Override
+    public void excluir(long cpf) throws Exception {
+        this.objeto.excluir(cpf);
     }
 }

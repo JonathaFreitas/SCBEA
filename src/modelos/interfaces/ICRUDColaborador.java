@@ -14,5 +14,6 @@ import modelos.classes.Colaborador;
 public interface ICRUDColaborador {
     void incluir(Colaborador objeto)throws Exception;
    public ArrayList<Colaborador> recuperar() throws Exception;
-   
+   void editar(Colaborador objeto) throws Exception;
+   void excluir(long cpf) throws Exception;
 }

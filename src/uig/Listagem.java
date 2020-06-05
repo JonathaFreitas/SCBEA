@@ -36,10 +36,6 @@ public class Listagem extends javax.swing.JInternalFrame {
         areaDeConhecimento = new AreaDeConhecimentoPersistencia("DDD.txt");
         colaborador = new ColaboradorPersistencia("Colaboradores.txt");
         
-        // Criando tabela Listar Editora
-        DefaultTableModel modelEditoras = (DefaultTableModel) jTable_tabelaEditoras.getModel();
-        jTable_tabelaEditoras.setRowSorter(new TableRowSorter(modelEditoras));
-        
         // Criando tabela Listar Autor
         DefaultTableModel modelAutores = (DefaultTableModel) jTable_tabelaAutores.getModel();
         jTable_tabelaAutores.setRowSorter(new TableRowSorter(modelAutores)); 
@@ -53,7 +49,7 @@ public class Listagem extends javax.swing.JInternalFrame {
         jTable_tabelaColaboradores.setRowSorter(new TableRowSorter(modelColaboradores));
         
         try{
-            listarDadosNaTelaEditora(editora.recuperar(),modelEditoras);
+            listarDadosNaTelaEditora(editora.recuperar());
             listarDadosNaTelaAutor(autor.recuperar(),modelAutores);
             listarDadosNaTelaAreaDeConhecimento(areaDeConhecimento.recuperar(), modelAreasDeConhecimento);
             listarDadosNaTelaColaborador(colaborador.recuperar(),modelColaboradores);
@@ -62,18 +58,20 @@ public class Listagem extends javax.swing.JInternalFrame {
         }
     }
     
-    private void listarDadosNaTelaEditora(ArrayList<Editora> lista, DefaultTableModel model) {
+        private void listarDadosNaTelaEditora(ArrayList<Editora> lista) {
         //Ordenando o Array por nome
-        //Criando a Tabela
+        //Criando tabela Listar Editoras
+        DefaultTableModel modelEditoras = (DefaultTableModel) jTable_tabelaEditoras.getModel();
+        jTable_tabelaEditoras.setRowSorter(new TableRowSorter(modelEditoras));
         //Limpando a tela
-        model.setNumRows(0);
+        modelEditoras.setNumRows(0);
         //Correr o ArrayList
         for (int pos = 0; pos < lista.size(); pos++) {
             String[] linha = new String[2];
             Editora aux = lista.get(pos);
             linha[0] = ""+aux.getId();
             linha[1] = aux.getNome();
-            model.addRow(linha);
+            modelEditoras.addRow(linha);
         }
     }
     
@@ -114,16 +112,17 @@ public class Listagem extends javax.swing.JInternalFrame {
         model.setNumRows(0);
         //Correr o ArrayList
         for (int pos = 0; pos < lista.size(); pos++) {
-            String[] linha = new String[8];
+            String[] linha = new String[9];
             Colaborador aux = lista.get(pos);
             linha[0] = ""+aux.getId();
             linha[1] = ""+aux.getMatricula();
             linha[2] = aux.getNome();
             linha[3] = ""+aux.getNumeroOAB();
-            linha[4] = aux.getEmail();
-            linha[5] = ""+aux.getTelefone();
-            linha[6] = aux.getTipo().toString();
-            linha[7] = aux.getStatus().toString();
+            linha[4] = ""+aux.getCpf();
+            linha[5] = aux.getEmail();
+            linha[6] = ""+aux.getTelefone();
+            linha[7] = aux.getTipo().toString();
+            linha[8] = aux.getStatus().toString();
             model.addRow(linha);
         }
     }
@@ -156,7 +155,7 @@ public class Listagem extends javax.swing.JInternalFrame {
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
-        setTitle("LISTAGEM");
+        setTitle("Listagem");
 
         jTable_tabelaEditoras.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -180,7 +179,7 @@ public class Listagem extends javax.swing.JInternalFrame {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 535, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 551, Short.MAX_VALUE)
         );
 
         jTable_tabelaListagem.addTab("Editora", jPanel1);
@@ -215,7 +214,7 @@ public class Listagem extends javax.swing.JInternalFrame {
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 535, Short.MAX_VALUE)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 551, Short.MAX_VALUE)
         );
 
         jTable_tabelaListagem.addTab("Autor", jPanel2);
@@ -251,7 +250,7 @@ public class Listagem extends javax.swing.JInternalFrame {
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 535, Short.MAX_VALUE)
+            .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 551, Short.MAX_VALUE)
         );
 
         jTable_tabelaListagem.addTab("Area", jPanel4);
@@ -286,7 +285,7 @@ public class Listagem extends javax.swing.JInternalFrame {
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 535, Short.MAX_VALUE)
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 551, Short.MAX_VALUE)
         );
 
         jTable_tabelaListagem.addTab("Livro", jPanel3);
@@ -296,11 +295,11 @@ public class Listagem extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "ID", "MATRICULA", "NOME", "OAB", "e-MAIL", "TELEFONE", "TIPO", "STATUS"
+                "ID", "MATRICULA", "NOME", "OAB", "CPF", "e-MAIL", "TELEFONE", "TIPO", "STATUS"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -311,12 +310,13 @@ public class Listagem extends javax.swing.JInternalFrame {
         if (jTable_tabelaColaboradores.getColumnModel().getColumnCount() > 0) {
             jTable_tabelaColaboradores.getColumnModel().getColumn(0).setPreferredWidth(5);
             jTable_tabelaColaboradores.getColumnModel().getColumn(1).setPreferredWidth(10);
-            jTable_tabelaColaboradores.getColumnModel().getColumn(2).setPreferredWidth(100);
+            jTable_tabelaColaboradores.getColumnModel().getColumn(2).setPreferredWidth(70);
             jTable_tabelaColaboradores.getColumnModel().getColumn(3).setPreferredWidth(10);
-            jTable_tabelaColaboradores.getColumnModel().getColumn(4).setPreferredWidth(50);
-            jTable_tabelaColaboradores.getColumnModel().getColumn(5).setPreferredWidth(15);
-            jTable_tabelaColaboradores.getColumnModel().getColumn(6).setPreferredWidth(15);
+            jTable_tabelaColaboradores.getColumnModel().getColumn(4).setPreferredWidth(11);
+            jTable_tabelaColaboradores.getColumnModel().getColumn(5).setPreferredWidth(50);
+            jTable_tabelaColaboradores.getColumnModel().getColumn(6).setPreferredWidth(10);
             jTable_tabelaColaboradores.getColumnModel().getColumn(7).setPreferredWidth(10);
+            jTable_tabelaColaboradores.getColumnModel().getColumn(8).setPreferredWidth(10);
         }
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
@@ -327,9 +327,7 @@ public class Listagem extends javax.swing.JInternalFrame {
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 471, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 551, Short.MAX_VALUE)
         );
 
         jTable_tabelaListagem.addTab("Colaborador", jPanel5);
@@ -345,7 +343,7 @@ public class Listagem extends javax.swing.JInternalFrame {
             .addComponent(jTable_tabelaListagem)
         );
 
-        setBounds(150, 20, 539, 529);
+        setBounds(130, 1, 1024, 620);
     }// </editor-fold>//GEN-END:initComponents
 
 

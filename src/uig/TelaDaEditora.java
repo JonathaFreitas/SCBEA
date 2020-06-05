@@ -28,8 +28,6 @@ public class TelaDaEditora extends javax.swing.JInternalFrame {
      */
     public TelaDaEditora() {
         initComponents();
-        DefaultTableModel model = (DefaultTableModel) jTable_tabelaEditoras.getModel();
-        jTable_tabelaEditoras.setRowSorter(new TableRowSorter(model));
         try {
             listarDadosNaTela(objetoControle.recuperar());
         } catch (Exception erro) {

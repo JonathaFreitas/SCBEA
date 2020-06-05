@@ -18,6 +18,7 @@ public class Colaborador {
     private int matricula = 0;
     private String nome = "";
     private int numeroOAB = 0;
+    private long cpf=0;
     private String email = "";
     private long telefone = 0;
     private TipoDeColaboradores tipo;
@@ -30,30 +31,32 @@ public class Colaborador {
 
     }
 
-    public Colaborador(int id, int matricula, String nome, int numeroOAB, String email, long telefone, String tipo, String status) {
+    public Colaborador(int id, int matricula, String nome, int numeroOAB,long cpf, String email, long telefone, String tipo, String status) {
         this.id=id;
         this.matricula=matricula;
         this.nome=nome;
         this.numeroOAB=numeroOAB;
+        this.cpf=cpf;
         this.email=email;
         this.telefone=telefone;
         this.tipo=TipoDeColaboradores.valueOf(tipo);
         this.status=TipoDeStatus.valueOf(status);
     }
-
+    
     public Colaborador(String strDados) throws Exception {
         String vetorString[] = strDados.split(";");
-        if (vetorString.length < 8) {
+        if (vetorString.length < 9) {
             throw new Exception("Faltam dados na String");
         }
         this.id = Integer.parseInt(vetorString[0]);
         this.matricula = Integer.parseInt(vetorString[1]);
         this.nome=vetorString[2];
         this.numeroOAB=Integer.parseInt(vetorString[3]);
-        this.email = vetorString[4];
-        this.telefone=Long.parseLong(vetorString[5]);
-        this.tipo=TipoDeColaboradores.valueOf(vetorString[6]);
-        this.status=TipoDeStatus.valueOf(vetorString[7]);
+        this.cpf=Long.parseLong(vetorString[4]);
+        this.email = vetorString[5];
+        this.telefone=Long.parseLong(vetorString[6]);
+        this.tipo=TipoDeColaboradores.valueOf(vetorString[7]);
+        this.status=TipoDeStatus.valueOf(vetorString[8]);
     }
 
     /**
@@ -111,7 +114,21 @@ public class Colaborador {
     public void setNumeroOAB(int numeroOAB) {
         this.numeroOAB = numeroOAB;
     }
+    
+    /**
+     * @return the cpf
+     */
+    public long getCpf() {
+        return cpf;
+    }
 
+    /**
+     * @param cpf the cpf to set
+     */
+    public void setCpf(long cpf) {
+        this.cpf = cpf;
+    }
+    
     /**
      * @return the email
      */
@@ -171,6 +188,6 @@ public class Colaborador {
     
     @Override
     public String toString(){
-        return id+";"+matricula+";"+nome+";"+numeroOAB+";"+email+";"+telefone+";"+tipo+";"+status;
+        return id+";"+matricula+";"+nome+";"+numeroOAB+";"+cpf+";"+email+";"+telefone+";"+tipo+";"+status;
     }
 }

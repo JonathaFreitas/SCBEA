@@ -16,6 +16,7 @@ public class Home extends javax.swing.JFrame {
      */
     public Home() {
         initComponents();
+        setExtendedState(MAXIMIZED_BOTH);
     }
 
     /**
@@ -50,6 +51,10 @@ public class Home extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
         jMenuItem_menuListarEditoras = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenu4 = new javax.swing.JMenu();
+        jMenuItem_sobre = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("SCBEA - Bem Vindo!");
@@ -194,8 +199,29 @@ public class Home extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu2);
 
-        jMenu3.setText("Emprestimo / Reserva");
+        jMenu3.setText("Locações");
+
+        jMenuItem2.setText("Reservas");
+        jMenu3.add(jMenuItem2);
+
+        jMenuItem3.setText("Empréstimos");
+        jMenu3.add(jMenuItem3);
+
         jMenuBar1.add(jMenu3);
+
+        jMenu4.setText("Opções");
+
+        jMenuItem_sobre.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.ALT_MASK));
+        jMenuItem_sobre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Sobre.png"))); // NOI18N
+        jMenuItem_sobre.setText("Sobre");
+        jMenuItem_sobre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem_sobreActionPerformed(evt);
+            }
+        });
+        jMenu4.add(jMenuItem_sobre);
+
+        jMenuBar1.add(jMenu4);
 
         setJMenuBar(jMenuBar1);
 
@@ -214,7 +240,7 @@ public class Home extends javax.swing.JFrame {
                 .addComponent(jDesktopPane_AreaTrabalho))
         );
 
-        setBounds(0, 0, 821, 549);
+        setBounds(300, 70, 821, 549);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
@@ -271,6 +297,13 @@ public class Home extends javax.swing.JFrame {
         TelaDoColaborador.setVisible(true);
     }//GEN-LAST:event_jButton_iconColaboradorActionPerformed
 
+    private void jMenuItem_sobreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_sobreActionPerformed
+        // TODO add your handling code here:
+        TelaSobre TelaSobre = new TelaSobre();
+        jDesktopPane_AreaTrabalho.add(TelaSobre);
+        TelaSobre.setVisible(true);
+    }//GEN-LAST:event_jMenuItem_sobreActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -316,13 +349,17 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem_AreaConhecimento;
     private javax.swing.JMenuItem jMenuItem_menuAutor;
     private javax.swing.JMenuItem jMenuItem_menuCadastroEditora;
     private javax.swing.JMenuItem jMenuItem_menuListarEditoras;
     private javax.swing.JMenuItem jMenuItem_menuLivro;
+    private javax.swing.JMenuItem jMenuItem_sobre;
     private javax.swing.JToolBar.Separator jSeparator1;
     private javax.swing.JToolBar.Separator jSeparator2;
     private javax.swing.JToolBar.Separator jSeparator3;
