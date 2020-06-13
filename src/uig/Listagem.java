@@ -12,10 +12,12 @@ import modelos.classes.AreaDeConhecimento;
 import modelos.classes.Autor;
 import modelos.classes.Editora;
 import modelos.classes.Colaborador;
+import modelos.classes.Livro;
 import persistencia.AreaDeConhecimentoPersistencia;
 import persistencia.AutorPersistencia;
 import persistencia.EditoraPersistencia;
 import persistencia.ColaboradorPersistencia;
+import persistencia.LivroPersistencia;
 
 /**
  *
@@ -26,6 +28,7 @@ public class Listagem extends javax.swing.JInternalFrame {
     AutorPersistencia autor = null;
     AreaDeConhecimentoPersistencia areaDeConhecimento = null;
     ColaboradorPersistencia colaborador=null;
+    LivroPersistencia livro=null;
     /**
      * Creates new form ListagemEditora_Interna
      */
@@ -35,6 +38,7 @@ public class Listagem extends javax.swing.JInternalFrame {
         autor = new AutorPersistencia("Autores.txt");
         areaDeConhecimento = new AreaDeConhecimentoPersistencia("DDD.txt");
         colaborador = new ColaboradorPersistencia("Colaboradores.txt");
+        livro = new LivroPersistencia("Livros.txt");
         
         // Criando tabela Listar Autor
         DefaultTableModel modelAutores = (DefaultTableModel) jTable_tabelaAutores.getModel();
@@ -48,11 +52,16 @@ public class Listagem extends javax.swing.JInternalFrame {
         DefaultTableModel modelColaboradores = (DefaultTableModel) jTable_tabelaColaboradores.getModel();
         jTable_tabelaColaboradores.setRowSorter(new TableRowSorter(modelColaboradores));
         
+        //Criando tabela Listar Livros
+        DefaultTableModel modelLivros = (DefaultTableModel) jTable_tabelaLivros.getModel();
+        jTable_tabelaLivros.setRowSorter(new TableRowSorter(modelLivros));
+        
         try{
             listarDadosNaTelaEditora(editora.recuperar());
             listarDadosNaTelaAutor(autor.recuperar(),modelAutores);
             listarDadosNaTelaAreaDeConhecimento(areaDeConhecimento.recuperar(), modelAreasDeConhecimento);
             listarDadosNaTelaColaborador(colaborador.recuperar(),modelColaboradores);
+            listarDadosNaTelaLivro(livro.recuperar(),modelLivros);
         }catch (Exception erro){
             JOptionPane.showMessageDialog(rootPane, erro);
         }
@@ -106,8 +115,6 @@ public class Listagem extends javax.swing.JInternalFrame {
         
         void listarDadosNaTelaColaborador(ArrayList<Colaborador> lista,DefaultTableModel model ) {
         //Ordenando o Array por nome
-        //Criando a Tabela
-        
         //Limpando a tela
         model.setNumRows(0);
         //Correr o ArrayList
@@ -123,6 +130,26 @@ public class Listagem extends javax.swing.JInternalFrame {
             linha[6] = ""+aux.getTelefone();
             linha[7] = aux.getTipo().toString();
             linha[8] = aux.getStatus().toString();
+            model.addRow(linha);
+        }
+    }
+        
+                void listarDadosNaTelaLivro(ArrayList<Livro> lista,DefaultTableModel model ) throws Exception {
+        //Ordenando o Array por nome
+        //Limpando a tela
+        //Criando objetos Editora
+        
+        model.setNumRows(0);
+        //Correr o ArrayList
+        for (int pos = 0; pos < lista.size(); pos++) {
+            String[] linha = new String[7];
+            Livro aux = lista.get(pos);
+            linha[0] = ""+aux.getId();
+            linha[1] = ""+editora.recuperar(aux.getIdEditora());
+            linha[2] = ""+autor.recuperar(aux.getIdAutor());
+            linha[3] = ""+areaDeConhecimento.recuperar(aux.getIdAreaDeConhecimento());
+            linha[4] = aux.getTituloDoLivro();
+            linha[5] = ""+aux.getIsbn();
             model.addRow(linha);
         }
     }
@@ -145,6 +172,9 @@ public class Listagem extends javax.swing.JInternalFrame {
         jPanel4 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         jTable_tabelaAreaDeConhecimento = new javax.swing.JTable();
+        jPanel6 = new javax.swing.JPanel();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        jTable_tabelaLivros1 = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable_tabelaLivros = new javax.swing.JTable();
@@ -175,11 +205,11 @@ public class Listagem extends javax.swing.JInternalFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 518, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1003, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 551, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 562, Short.MAX_VALUE)
         );
 
         jTable_tabelaListagem.addTab("Editora", jPanel1);
@@ -210,11 +240,11 @@ public class Listagem extends javax.swing.JInternalFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 518, Short.MAX_VALUE)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1003, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 551, Short.MAX_VALUE)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 562, Short.MAX_VALUE)
         );
 
         jTable_tabelaListagem.addTab("Autor", jPanel2);
@@ -246,25 +276,68 @@ public class Listagem extends javax.swing.JInternalFrame {
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 518, Short.MAX_VALUE)
+            .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 1003, Short.MAX_VALUE)
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 551, Short.MAX_VALUE)
+            .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 562, Short.MAX_VALUE)
         );
 
         jTable_tabelaListagem.addTab("Area", jPanel4);
+
+        jTable_tabelaLivros1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ISBN", "TÍTULO", "ID EXEMPLAR", "NUM EXEMPLAR", "ANO PUBLICAÇÃO", "DATA COMPRA", "VALOR", "EDICAO", "STATUS", "MOTIVO INATIVAÇÃO"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane6.setViewportView(jTable_tabelaLivros1);
+        if (jTable_tabelaLivros1.getColumnModel().getColumnCount() > 0) {
+            jTable_tabelaLivros1.getColumnModel().getColumn(0).setPreferredWidth(3);
+            jTable_tabelaLivros1.getColumnModel().getColumn(1).setPreferredWidth(50);
+            jTable_tabelaLivros1.getColumnModel().getColumn(2).setPreferredWidth(3);
+            jTable_tabelaLivros1.getColumnModel().getColumn(3).setPreferredWidth(3);
+            jTable_tabelaLivros1.getColumnModel().getColumn(4).setPreferredWidth(4);
+            jTable_tabelaLivros1.getColumnModel().getColumn(5).setPreferredWidth(10);
+            jTable_tabelaLivros1.getColumnModel().getColumn(6).setPreferredWidth(10);
+            jTable_tabelaLivros1.getColumnModel().getColumn(7).setPreferredWidth(4);
+            jTable_tabelaLivros1.getColumnModel().getColumn(8).setPreferredWidth(7);
+            jTable_tabelaLivros1.getColumnModel().getColumn(9).setPreferredWidth(10);
+        }
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 1003, Short.MAX_VALUE)
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 562, Short.MAX_VALUE)
+        );
+
+        jTable_tabelaListagem.addTab("Exemplar", jPanel6);
 
         jTable_tabelaLivros.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "ID", "TÍTULO DO LIVRO"
+                "ID", "EDITORA", "AUTOR", "AREA CONHECIMENTO", "TÍTULO"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -273,19 +346,22 @@ public class Listagem extends javax.swing.JInternalFrame {
         });
         jScrollPane3.setViewportView(jTable_tabelaLivros);
         if (jTable_tabelaLivros.getColumnModel().getColumnCount() > 0) {
-            jTable_tabelaLivros.getColumnModel().getColumn(0).setPreferredWidth(10);
-            jTable_tabelaLivros.getColumnModel().getColumn(1).setPreferredWidth(300);
+            jTable_tabelaLivros.getColumnModel().getColumn(0).setPreferredWidth(3);
+            jTable_tabelaLivros.getColumnModel().getColumn(1).setPreferredWidth(50);
+            jTable_tabelaLivros.getColumnModel().getColumn(2).setPreferredWidth(3);
+            jTable_tabelaLivros.getColumnModel().getColumn(3).setPreferredWidth(3);
+            jTable_tabelaLivros.getColumnModel().getColumn(4).setPreferredWidth(4);
         }
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 518, Short.MAX_VALUE)
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 1003, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 551, Short.MAX_VALUE)
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 562, Short.MAX_VALUE)
         );
 
         jTable_tabelaListagem.addTab("Livro", jPanel3);
@@ -323,11 +399,11 @@ public class Listagem extends javax.swing.JInternalFrame {
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 518, Short.MAX_VALUE)
+            .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 1003, Short.MAX_VALUE)
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 551, Short.MAX_VALUE)
+            .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 562, Short.MAX_VALUE)
         );
 
         jTable_tabelaListagem.addTab("Colaborador", jPanel5);
@@ -353,16 +429,19 @@ public class Listagem extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JTable jTable_tabelaAreaDeConhecimento;
     private javax.swing.JTable jTable_tabelaAutores;
     private javax.swing.JTable jTable_tabelaColaboradores;
     private javax.swing.JTable jTable_tabelaEditoras;
     private javax.swing.JTabbedPane jTable_tabelaListagem;
     private javax.swing.JTable jTable_tabelaLivros;
+    private javax.swing.JTable jTable_tabelaLivros1;
     // End of variables declaration//GEN-END:variables
 }

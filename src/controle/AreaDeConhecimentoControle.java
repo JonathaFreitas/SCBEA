@@ -38,8 +38,19 @@ public class AreaDeConhecimentoControle implements ICRUDAreaDeConhecimento {
         this.objeto.incluir(objeto);
     }
     
+    @Override
     public ArrayList<AreaDeConhecimento> recuperar() throws Exception{
         return this.objeto.recuperar();
+    }
+    
+    @Override
+    public AreaDeConhecimento recuperar(int id) throws Exception{
+        return this.objeto.recuperar(id);
+    }
+    
+    @Override
+    public AreaDeConhecimento recuperar(String descricao) throws Exception{
+        return this.objeto.recuperar(descricao);
     }
 }
 

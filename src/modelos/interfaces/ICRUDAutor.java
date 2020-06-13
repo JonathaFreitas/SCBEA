@@ -16,5 +16,6 @@ public interface ICRUDAutor {
     //Descrever os metodos
    void incluir(Autor objeto)throws Exception;
    public ArrayList<Autor> recuperar() throws Exception;
-   
+   public Autor recuperar(int id)throws Exception;
+   public Autor recuperar (String nome) throws Exception;
 }

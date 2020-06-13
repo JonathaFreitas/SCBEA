@@ -14,5 +14,7 @@ public interface ICRUDEditora {
     //Descrever os metodos
    void incluir(Editora objeto)throws Exception;
    public ArrayList<Editora> recuperar() throws Exception;
-    
+   public Editora recuperar(int id)throws Exception;
+   public Editora recuperar (String nome) throws Exception;
+   
 }

@@ -3,15 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package modelos.classes;
+package modelos.classes.enumerations;
 
 /**
  *
  * @author jsfr
  */
-public enum TipoDeColaboradores {
-    FUNCIONARIO,
-    ESTAGIARIO,
-    ADVOGADO;
-
+public enum MotivoDeDesativacao {
+    DANIFICADO,
+    DESAPARECIDO,
+    OBSOLETO;
 }

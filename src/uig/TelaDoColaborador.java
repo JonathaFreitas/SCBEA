@@ -57,6 +57,7 @@ public class TelaDoColaborador extends javax.swing.JInternalFrame {
         jButton_salvar.setEnabled(true);
         jButton_editar.setEnabled(false);
         jButton_excluir.setEnabled(false);
+        jButton_limpar.setEnabled(false);
     }
 
     /**
@@ -199,6 +200,8 @@ public class TelaDoColaborador extends javax.swing.JInternalFrame {
                 jButton_limparActionPerformed(evt);
             }
         });
+
+        jTextField_numeroOAB.setText("0");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -393,7 +396,7 @@ public class TelaDoColaborador extends javax.swing.JInternalFrame {
     private void jButton_excluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_excluirActionPerformed
         // TODO add your handling code here:
         try {
-            objetoControle.excluir(Integer.parseInt(jTextField_cpf.getText()));
+            objetoControle.excluir(Long.parseLong(jTextField_cpf.getText()));
 
             // Criando Tabela Listar Colaboradores
             DefaultTableModel modelColaboradores = (DefaultTableModel) jTable_tabelaColaboradores.getModel();

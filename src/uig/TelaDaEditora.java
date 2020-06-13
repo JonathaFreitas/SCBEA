@@ -51,7 +51,6 @@ public class TelaDaEditora extends javax.swing.JInternalFrame {
         jLabel1 = new javax.swing.JLabel();
         jTextField_nomeEditora = new javax.swing.JTextField();
         jButton_incluirEditora = new javax.swing.JToggleButton();
-        jButton_mostrarEditora = new javax.swing.JToggleButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable_tabelaEditoras = new javax.swing.JTable();
 
@@ -67,14 +66,6 @@ public class TelaDaEditora extends javax.swing.JInternalFrame {
         jButton_incluirEditora.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton_incluirEditoraActionPerformed(evt);
-            }
-        });
-
-        jButton_mostrarEditora.setText("Mostrar");
-        jButton_mostrarEditora.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jButton_mostrarEditora.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_mostrarEditoraActionPerformed(evt);
             }
         });
 
@@ -101,19 +92,18 @@ public class TelaDaEditora extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButton_incluirEditora))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField_nomeEditora, javax.swing.GroupLayout.DEFAULT_SIZE, 359, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton_incluirEditora)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton_mostrarEditora)))
+                        .addComponent(jTextField_nomeEditora, javax.swing.GroupLayout.DEFAULT_SIZE, 359, Short.MAX_VALUE)))
                 .addGap(18, 18, 18))
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -123,9 +113,7 @@ public class TelaDaEditora extends javax.swing.JInternalFrame {
                     .addComponent(jTextField_nomeEditora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton_incluirEditora)
-                    .addComponent(jButton_mostrarEditora))
+                .addComponent(jButton_incluirEditora)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE))
         );
@@ -149,17 +137,6 @@ public class TelaDaEditora extends javax.swing.JInternalFrame {
             jTextField_nomeEditora.setText("");
         }
     }//GEN-LAST:event_jButton_incluirEditoraActionPerformed
-
-    private void jButton_mostrarEditoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_mostrarEditoraActionPerformed
-        // TODO add your handling code here:
-        try {
-            listarDadosNaTela(objetoControle.recuperar());
-        } catch (Exception erro) {
-            JOptionPane.showMessageDialog(rootPane, erro);
-        }finally{
-            jButton_mostrarEditora.setSelected(false);
-        }
-    }//GEN-LAST:event_jButton_mostrarEditoraActionPerformed
 
     private void jTable_tabelaEditorasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_tabelaEditorasMouseClicked
         try{
@@ -190,7 +167,6 @@ public class TelaDaEditora extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton jButton_incluirEditora;
-    private javax.swing.JToggleButton jButton_mostrarEditora;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable_tabelaEditoras;

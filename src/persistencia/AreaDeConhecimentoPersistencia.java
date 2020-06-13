@@ -33,7 +33,7 @@ public class AreaDeConhecimentoPersistencia implements ICRUDAreaDeConhecimento{
             //Criar o buffer do arquivo
             BufferedWriter bw = new BufferedWriter(fw);
             //Escreve no arquivo
-            bw.write(objeto.toString() + "\n");
+            bw.write(objeto.gravar() + "\n");
             //Fechar o arquivo
             bw.close();
         } catch (Exception erro) {
@@ -58,4 +58,40 @@ public class AreaDeConhecimentoPersistencia implements ICRUDAreaDeConhecimento{
             throw erro;
         }
     }
-}
+    
+    @Override
+        public AreaDeConhecimento recuperar(int id)throws Exception {
+        AreaDeConhecimento objetoAreaDeConhecimento = new AreaDeConhecimento();
+        try {
+            FileReader fr = new FileReader(nomeDoArquivoNoDisco);
+            BufferedReader br = new BufferedReader(fr);
+            String linha = "";
+            while ((linha = br.readLine()) != null) {
+                AreaDeConhecimento aux = new AreaDeConhecimento(linha);
+                if (id==aux.getId()) objetoAreaDeConhecimento=aux;
+            }
+            br.close();
+        } catch (Exception erro) {
+            throw erro;
+        }
+        return objetoAreaDeConhecimento;
+    }
+        
+    @Override
+        public AreaDeConhecimento recuperar(String descricao)throws Exception {
+        AreaDeConhecimento objetoAreaDeConhecimento = new AreaDeConhecimento();
+        try {
+            FileReader fr = new FileReader(nomeDoArquivoNoDisco);
+            BufferedReader br = new BufferedReader(fr);
+            String linha = "";
+            while ((linha = br.readLine()) != null) {
+                AreaDeConhecimento aux = new AreaDeConhecimento(linha);
+                if (descricao.equals(aux.toString())) objetoAreaDeConhecimento=aux;
+            }
+            br.close();
+        } catch (Exception erro) {
+            throw erro;
+        }
+        return objetoAreaDeConhecimento;
+    }
+    }

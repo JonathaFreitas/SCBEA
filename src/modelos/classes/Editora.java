@@ -10,8 +10,10 @@ package modelos.classes;
  * @author eugeniojulio
  */
 public class Editora {
+    //Atributos
     private int id;
     private String nome;
+    
     //Metodos
 
     public Editora(){
@@ -30,13 +32,18 @@ public class Editora {
         this.id= Integer.parseInt(vetorString[0]);
         this.nome= vetorString[1];
     }
+    
+    public Editora(Editora objeto){
+        this.id=objeto.getId();
+        this.nome=objeto.getNome();
+    }
     /**
      * @return the id
      */
     public int getId() {
         return id;
     }
-
+    
     /**
      * @param id the id to set
      */
@@ -58,8 +65,12 @@ public class Editora {
         this.nome = nome;
     }
     
+    public String gravar(){
+        return id+";"+nome;
+    }
+    
     @Override
     public String toString(){
-        return id+";"+nome;
-    }   
+        return nome;
+    }    
 }

@@ -15,4 +15,6 @@ public interface ICRUDAreaDeConhecimento {
     //Descrever os metodos
    void incluir(AreaDeConhecimento objeto)throws Exception;
    public ArrayList<AreaDeConhecimento> recuperar() throws Exception;
+   public AreaDeConhecimento recuperar(int id)throws Exception;
+   public AreaDeConhecimento recuperar (String descricao) throws Exception;
 }

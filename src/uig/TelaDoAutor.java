@@ -51,7 +51,6 @@ public class TelaDoAutor extends javax.swing.JInternalFrame {
         jLabel1 = new javax.swing.JLabel();
         jTextField_nomeAutor = new javax.swing.JTextField();
         jButton_incluirAutor = new javax.swing.JButton();
-        jButton_mostrar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable_tabelaAutores = new javax.swing.JTable();
 
@@ -68,13 +67,6 @@ public class TelaDoAutor extends javax.swing.JInternalFrame {
         jButton_incluirAutor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton_incluirAutorActionPerformed(evt);
-            }
-        });
-
-        jButton_mostrar.setText("Mostrar");
-        jButton_mostrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_mostrarActionPerformed(evt);
             }
         });
 
@@ -104,6 +96,7 @@ public class TelaDoAutor extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 474, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -112,12 +105,9 @@ public class TelaDoAutor extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jTextField_nomeAutor))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 317, Short.MAX_VALUE)
-                        .addComponent(jButton_incluirAutor)
-                        .addGap(7, 7, 7)
-                        .addComponent(jButton_mostrar)))
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButton_incluirAutor)))
                 .addContainerGap())
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -127,27 +117,13 @@ public class TelaDoAutor extends javax.swing.JInternalFrame {
                     .addComponent(jLabel1)
                     .addComponent(jTextField_nomeAutor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton_incluirAutor)
-                    .addComponent(jButton_mostrar))
+                .addComponent(jButton_incluirAutor)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 258, Short.MAX_VALUE))
         );
 
         setBounds(150, 20, 490, 398);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton_mostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_mostrarActionPerformed
-        // TODO add your handling code here:
-        try {
-            listarDadosNaTela(objetoControle.recuperar());
-
-        } catch (Exception erro) {
-            JOptionPane.showMessageDialog(rootPane, erro);
-        }finally{
-            
-        }
-    }//GEN-LAST:event_jButton_mostrarActionPerformed
 
     private void jButton_incluirAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_incluirAutorActionPerformed
         // TODO add your handling code here:
@@ -185,7 +161,6 @@ public class TelaDoAutor extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton_incluirAutor;
-    private javax.swing.JButton jButton_mostrar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable_tabelaAutores;

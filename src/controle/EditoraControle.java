@@ -39,6 +39,13 @@ public class EditoraControle implements ICRUDEditora{
     public ArrayList<Editora> recuperar() throws Exception {
         return this.objeto.recuperar();
     }
+    @Override
+    public Editora recuperar(int id)throws Exception {
+        return this.objeto.recuperar(id);
+    }
     
-    
+    @Override
+    public Editora recuperar(String nome)throws Exception {
+        return this.objeto.recuperar(nome);
+    }
 }

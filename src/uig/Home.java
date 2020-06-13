@@ -5,6 +5,8 @@
  */
 package uig;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author jsfr
@@ -47,7 +49,7 @@ public class Home extends javax.swing.JFrame {
         jMenuItem_menuAutor = new javax.swing.JMenuItem();
         jMenuItem_AreaConhecimento = new javax.swing.JMenuItem();
         jMenuItem_menuLivro = new javax.swing.JMenuItem();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem_menuExemplar = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem_menuListarEditoras = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
@@ -111,6 +113,11 @@ public class Home extends javax.swing.JFrame {
         jButton_iconLivro.setMaximumSize(new java.awt.Dimension(65, 55));
         jButton_iconLivro.setMinimumSize(new java.awt.Dimension(65, 55));
         jButton_iconLivro.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton_iconLivro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_iconLivroActionPerformed(evt);
+            }
+        });
         jToolBar1.add(jButton_iconLivro);
         jToolBar1.add(jSeparator5);
 
@@ -119,6 +126,11 @@ public class Home extends javax.swing.JFrame {
         jButton_iconExemplar.setFocusable(false);
         jButton_iconExemplar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton_iconExemplar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton_iconExemplar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_iconExemplarActionPerformed(evt);
+            }
+        });
         jToolBar1.add(jButton_iconExemplar);
         jToolBar1.add(jSeparator6);
 
@@ -178,10 +190,15 @@ public class Home extends javax.swing.JFrame {
         jMenuItem_menuLivro.setText("Livro");
         jMenu1.add(jMenuItem_menuLivro);
 
-        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.ALT_MASK));
-        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Exemplar.png"))); // NOI18N
-        jMenuItem1.setText("Exemplar");
-        jMenu1.add(jMenuItem1);
+        jMenuItem_menuExemplar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.ALT_MASK));
+        jMenuItem_menuExemplar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Exemplar.png"))); // NOI18N
+        jMenuItem_menuExemplar.setText("Exemplar");
+        jMenuItem_menuExemplar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem_menuExemplarActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem_menuExemplar);
 
         jMenuBar1.add(jMenu1);
 
@@ -199,7 +216,7 @@ public class Home extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu2);
 
-        jMenu3.setText("Locações");
+        jMenu3.setText("Empréstimos");
 
         jMenuItem2.setText("Reservas");
         jMenu3.add(jMenuItem2);
@@ -304,6 +321,39 @@ public class Home extends javax.swing.JFrame {
         TelaSobre.setVisible(true);
     }//GEN-LAST:event_jMenuItem_sobreActionPerformed
 
+    private void jButton_iconLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_iconLivroActionPerformed
+        // TODO add your handling code here:
+        try{
+            TelaLivro TelaLivro = new TelaLivro();
+            jDesktopPane_AreaTrabalho.add(TelaLivro);
+            TelaLivro.setVisible(true);
+        } catch (Exception erro){
+            JOptionPane.showMessageDialog(null, "Erro ao cagerrar janela do Livro");
+        }    
+    }//GEN-LAST:event_jButton_iconLivroActionPerformed
+
+    private void jButton_iconExemplarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_iconExemplarActionPerformed
+        // TODO add your handling code here:
+        try{
+            TelaExemplar TelaExemplar = new TelaExemplar();
+            jDesktopPane_AreaTrabalho.add(TelaExemplar);
+            TelaExemplar.setVisible(true);
+        } catch (Exception erro){
+            JOptionPane.showMessageDialog(null, "Erro ao cagerrar janela do Livro");
+        }
+    }//GEN-LAST:event_jButton_iconExemplarActionPerformed
+
+    private void jMenuItem_menuExemplarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_menuExemplarActionPerformed
+        // TODO add your handling code here:
+        try{
+            TelaExemplar TelaExemplar = new TelaExemplar();
+            jDesktopPane_AreaTrabalho.add(TelaExemplar);
+            TelaExemplar.setVisible(true);
+        } catch (Exception erro){
+            JOptionPane.showMessageDialog(null, "Erro ao cagerrar janela do Livro");
+        }
+    }//GEN-LAST:event_jMenuItem_menuExemplarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -345,18 +395,18 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JButton jButton_iconEditora;
     private javax.swing.JButton jButton_iconExemplar;
     private javax.swing.JButton jButton_iconLivro;
-    private javax.swing.JDesktopPane jDesktopPane_AreaTrabalho;
+    public static javax.swing.JDesktopPane jDesktopPane_AreaTrabalho;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem_AreaConhecimento;
     private javax.swing.JMenuItem jMenuItem_menuAutor;
     private javax.swing.JMenuItem jMenuItem_menuCadastroEditora;
+    private javax.swing.JMenuItem jMenuItem_menuExemplar;
     private javax.swing.JMenuItem jMenuItem_menuListarEditoras;
     private javax.swing.JMenuItem jMenuItem_menuLivro;
     private javax.swing.JMenuItem jMenuItem_sobre;

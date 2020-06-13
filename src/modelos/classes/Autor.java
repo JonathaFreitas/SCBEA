@@ -10,8 +10,10 @@ package modelos.classes;
  * @author jsfr
  */
 public class Autor {
+    //Atributos
     private int id;
     private String nome;
+    
     //Metodos
 
     public Autor(){
@@ -30,6 +32,11 @@ public class Autor {
         }
         this.id= Integer.parseInt(vetorString[0]);
         this.nome= vetorString[1];
+    }
+    
+    public Autor(Autor objeto) {
+        this.id=objeto.getId();
+        this.nome=objeto.getNome();
     }
     /**
      * @return the id
@@ -59,9 +66,11 @@ public class Autor {
         this.nome = nome;
     }
     
-    @Override
-    public String toString(){
+    public String gravar(){
         return id+";"+nome;
     }
-    
+    @Override
+     public String toString(){
+        return nome;
+    }
 }

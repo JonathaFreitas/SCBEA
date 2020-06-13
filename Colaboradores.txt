@@ -1,2 +1,2 @@
-96;2424;Deockar Alexandre Gomes;0;12345678901;deokar@gmail.com;987654321;FUNCIONARIO;ATIVO
-100;2564;Jonatha Siqueira de Freitas;123;141014164;jny17@msn.com;982158514;ADVOGADO;ATIVO
+96;2424;Deockar Alexandre Gomes;0;12345678901;deokar@gmail.com;987654322;ESTAGIARIO;ATIVO
+102;2564;Jonatha Siqueira de freitas;0;141014164;jny17@msn.com;982158514;FUNCIONARIO;ATIVO

@@ -1,0 +1,4 @@
+114;1;108;28;A Volta dos que Nao Foram;4321
+130;1;16;2;Poeira do Sociedade;3416
+132;107;73;27;Metallica;666
+152;4;16;23;A telecomunicaçao na pandemia;1111

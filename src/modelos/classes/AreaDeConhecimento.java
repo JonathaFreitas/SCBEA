@@ -10,32 +10,38 @@ package modelos.classes;
  * @author jsfr
  */
 public class AreaDeConhecimento {
+
     //Atributos
     private int id;
     private String classificacaoDecimalDireito;
     private String descricao;
-    
+
     // Métodos
-    public AreaDeConhecimento(){
-        
+    public AreaDeConhecimento() {
+
     }
-    
-    public AreaDeConhecimento(int id,String classificacaoDecimalDireito, String descricao) {
-        this.id=id;
+
+    public AreaDeConhecimento(int id, String classificacaoDecimalDireito, String descricao) {
+        this.id = id;
         this.classificacaoDecimalDireito = classificacaoDecimalDireito;
         this.descricao = descricao;
     }
-    
-        public AreaDeConhecimento(String strDados) throws Exception {
+
+    public AreaDeConhecimento(String strDados) throws Exception {
         String vetorString[] = strDados.split(";");
         if (vetorString.length < 3) {
             throw new Exception("Faltam dados na String");
         }
-        this.id= Integer.parseInt(vetorString[0]);
-        this.classificacaoDecimalDireito= vetorString[1];
-        this.descricao=vetorString[2];
+        this.id = Integer.parseInt(vetorString[0]);
+        this.classificacaoDecimalDireito = vetorString[1];
+        this.descricao = vetorString[2];
     }
 
+    public AreaDeConhecimento(AreaDeConhecimento objeto){
+        this.id=objeto.getId();
+        this.classificacaoDecimalDireito = objeto.getClassificacaoDecimalDireito();
+        this.descricao=objeto.getDescricao();
+    }
     /**
      * @return the id
      */
@@ -78,8 +84,11 @@ public class AreaDeConhecimento {
         this.descricao = descricao;
     }
     
+    public String gravar(){
+        return id + ";" + classificacaoDecimalDireito + ";" + descricao;
+    }
     @Override
-    public String toString(){
-        return id+";"+classificacaoDecimalDireito+";"+descricao;
+    public String toString() {
+        return descricao;
     }
 }

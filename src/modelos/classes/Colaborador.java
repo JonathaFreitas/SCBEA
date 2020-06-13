@@ -4,16 +4,16 @@
  * and open the template in the editor.
  */
 package modelos.classes;
+import modelos.classes.enumerations.TipoDeColaboradores;
+import modelos.classes.enumerations.TipoDeStatus;
 import java.util.ArrayList;
-import java.util.List;
-import modelos.classes.TipoDeColaboradores;
-import modelos.classes.TipoDeStatus;
+
 /**
  *
  * @author jsfr
  */
 public class Colaborador {
-
+    //Atributos
     private int id = 0;
     private int matricula = 0;
     private String nome = "";
@@ -24,13 +24,15 @@ public class Colaborador {
     private TipoDeColaboradores tipo;
     private TipoDeStatus status;
     
-    private List<Emprestimo>  emprestimos = new ArrayList<>();
-    private List<Reserva> reservas = new ArrayList<>();
-
+    private ArrayList<Emprestimo>  emprestimos = new ArrayList<Emprestimo>();
+    private ArrayList<Reserva> reservas = new ArrayList<Reserva>();
+    
+    //Métodos
+    //Contrutor Padrao
     public Colaborador() {
 
     }
-
+    //Construtor com parametros
     public Colaborador(int id, int matricula, String nome, int numeroOAB,long cpf, String email, long telefone, String tipo, String status) {
         this.id=id;
         this.matricula=matricula;
@@ -43,6 +45,7 @@ public class Colaborador {
         this.status=TipoDeStatus.valueOf(status);
     }
     
+    //COntrutor para metodo recuperar do ArrayList
     public Colaborador(String strDados) throws Exception {
         String vetorString[] = strDados.split(";");
         if (vetorString.length < 9) {
